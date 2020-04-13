@@ -1,0 +1,14 @@
+<h1> Hi <%= @user.name %> </h1>
+
+<% if !@user.professor? %>
+    <% @user.subjects.each do |sub| %>
+        <div><%= sub.name %> with <%= sub.professor.name %></div>
+    <% end %>
+<% else %>
+    <% @user.courses.each do |course| %>
+        <div><%= course.name %></div>
+        <% course.students.each do |student| %>
+           <div> <%= student.name %></div>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,25 @@
+<div>
+<h2><%= @user.name %></h2>
+<% @user.subjects.each do |x| %>
+    <div><%= x.name %> with <%= x.professor.name %></div>
+<% end %>
+</div>
+
+<%= form_for @user, url: update_subjects_path(@user), method: :post do |f|  %>
+        <%= f.collection_select(:subject_ids, Subject.all, :id, :name) do |b|%>
+          
+                <% end %>
+    
+   
+
+
+
+<p><%= f.submit %>
+<% end %>
+<% if @enroll %>
+<% if @enroll.errors%>
+    <%@enroll.errors.full_messages.each do |x| %>
+        <%= x %>
+    <% end %>
+<% end %>
+<% end %>

@@ -24,7 +24,7 @@ sub1 = Subject.create(name: "Something 101", professor: prof1)
 enr1 = Enrollment.create(student: stud1, subject: sub1)
 
 
-user1 = User.create(name: "Harry Potter", email: "harry@potter.com", house: house1)
+user1 = User.create(name: "Harry Potter", email: "harry@potter.com", password_digest: BCrypt::Password.create('password'), house: house1)
 user2 = User.create(name: "Ron Weasley", email: "ron@potter.com", password_digest: BCrypt::Password.create('password'), house: house1)
 user3 = User.create(name: "Hermoine Granger", email: "hermoine@potter.com", password_digest: BCrypt::Password.create('password'), house: house1)
 user4 = User.create(name: "Draco Malfoy", email: "draco@potter.com", password_digest: BCrypt::Password.create('password'), house: house2)

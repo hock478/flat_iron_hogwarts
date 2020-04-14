@@ -13,10 +13,10 @@ House.destroy_all
 
 
 
-house1 = House.create(name: "Gryffindor")
-house2 = House.create(name: "Slytherin")
-house3 = House.create(name: "Ravenclaw")
-house4 = House.create(name: "Hufflepuff")
+house1 = House.create(name: "Gryffindor", img: "gryffindor.png")
+house2 = House.create(name: "Slytherin", img: "slytherin.png")
+house3 = House.create(name: "Ravenclaw",img: "raveclaw.png")
+house4 = House.create(name: "Hufflepuff", img: "hufflepuff.png")
 
 stud1 = User.create(name: "alex", email: "alex@dd.com", password_digest: BCrypt::Password.create('password'))
 prof1 = User.create(name: "chine", email: "chine@dd.com", password_digest: BCrypt::Password.create('password'), house: house3, professor: true)

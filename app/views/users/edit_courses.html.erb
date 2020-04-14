@@ -3,22 +3,16 @@
 <% @user.courses.each do |course| %>
     <div><%= course.name %></div>
         <% course.students.each do |stud| %>
-            <div><%= stud.name %><%= link_to "Remove From Class", enrollment_path(course.enrollments.find_by(student: stud)), :method => :delete %></div>
+            <div><%= stud.name %></div>
         <% end %>
 
 <% end %>
 </div>
 
-<%= form_for @user, url: update_courses_path(@user), method: :post do |f|  %>
-        <%= f.collection_select(:user_ids, User.all_students, :id, :name) do |b|%>
-          
-                <% end %>
-    
-   
+<%= form_with url: update_courses_path(@user), method: :post do |f|  %>
 
-
-
-<p><%= f.submit %>
+         <%= f.collection_select(:user_ids, User.all_students, :id, :name) %>
+<%= f.submit "Add to Class"%>
 <% end %>
 <% if @enroll %>
 <% if @enroll.errors%>

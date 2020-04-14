@@ -1,1 +1,5 @@
-<%= @subject.professor.name %>
+<h2><%= @subject.name %></h2>
+<h3><%= @subject.professor.name %></h3>
+<% @subject.students.each do |student| %>
+<div><%= student.name %><%= link_to "Remove From Class", enrollment_path(@subject.enrollments.find_by(student: student)), :method => :delete if @current == @subject.professor %></div>
+<% end %>

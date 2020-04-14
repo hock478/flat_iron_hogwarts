@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_165837) do
+ActiveRecord::Schema.define(version: 2020_04_14_035655) do
 
   create_table "enrollments", force: :cascade do |t|
     t.integer "subject_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_165837) do
     t.integer "points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "img"
   end
 
   create_table "subjects", force: :cascade do |t|

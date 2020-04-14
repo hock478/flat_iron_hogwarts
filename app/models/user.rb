@@ -10,7 +10,9 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: {case_sensitive: false}
 
    def self.all_students
-        User.all.map {|user| user if !user.professor}
+        students = []
+        User.all.each {|user| students << user if !user.professor && user }
+        students
    end
 
 end

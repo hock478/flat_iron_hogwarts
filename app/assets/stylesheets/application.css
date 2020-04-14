@@ -72,3 +72,23 @@
     text-decoration: none;
     color: white;
   }
+
+  #profile_house img {
+    padding-top: 10px;
+      width: 100px;
+  }
+
+  #profile_house h1 {
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80px;
+}
+  #profile_house {
+    height: 150px;
+    /* width: auto; */
+    /* background-image: url("oldpaper.jpg"); */
+    
+}
+div.subject_list {
+    margin: 20px;
+}

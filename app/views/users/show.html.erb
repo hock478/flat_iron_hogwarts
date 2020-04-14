@@ -1,23 +1,31 @@
-<h1> Hi <%= @user.name %> </h1>
-<% if !@user.house %> 
-<div> You are Unsorted!!!</div>
-<% else %>
-<div><%= @user.house.name %></div>
+<div id="profile_house">
+    <% if !@user.house %> 
+        <div> You are Unsorted!!!</div>
+    <% else %>
+        <div style="width: 100px; float: left">
+            <div><%= image_tag(@user.house.img) %></div>
+            <div style="text-align: center"><%= @user.house.name %></div>
+        </div>
 <% end %>
 
+    <h1><%= @user.name %> </h1>
+</div>
+
+<br>
+<div class="subject_list">
 <% if !@user.professor? %>
+    <h3>Subjects</h3>
     <% @user.subjects.each do |sub| %>
         <div><%= sub.name %> with <%= sub.professor.name %></div>
     <% end %>
 <% else %>
+    <h3>Teaches</h3>
     <% @user.courses.each do |course| %>
-        <div><%= course.name %></div>
-        <div><%= "edit course button goes here" if @current == @user %></div>
-        <% course.students.each do |student| %>
-           <div> <%= student.name %></div>
-        <% end %>
+        <div><%= link_to course.name, subject_path(course) %></div>
+        
     <% end %>
 <% end %>
 
 <br>
 <%= link_to "Edit Subjects", edit_subjects_path(@user) if @user == @current%>
+</div>

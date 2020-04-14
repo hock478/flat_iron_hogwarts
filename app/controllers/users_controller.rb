@@ -70,11 +70,12 @@ class UsersController < ApplicationController
         if @current == nil
             redirect_to "/"
         end
+        @enroll = Enrollment.new
     end
 
     def update_courses
-
-        
+        byebug
+        @enroll = Enrollment.cre
     end
 
     private
@@ -83,6 +84,9 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
     
+    def id_params
+        params.permit(:user_ids)
+    end
 
     def user_params
         params.require(:user).permit(:name, :password, :email, :password_confirmation, :professor, :house_id, :subject_ids)

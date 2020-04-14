@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   # post 'games/:id/buy', to: "games#buy"
   # post '/logout', to: "sessions#destroy", as: "logout"
 
-  get '/professors/:id/edit_courses', to: 'users#edit_courses'
-  post '/professors/:id/', to: "users#update_courses", as: "update_courses"
+  # get '/professors/:id/edit_courses', to: 'users#edit_courses'
+  post '/professors/:id/', to: "subjects#update_courses", as: "update_course"
 
+  post '/add_points/:id', to: "houses#add_points", as: "add_points"
+  get '/users/:id/sorted', to: "users#sorting", as: "sorting_hat"
+  post 'sorted', to: "users#sorted"
 end

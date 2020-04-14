@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:edit, :show, :edit_subjects, :update_subjects, :edit_courses]
+    before_action :set_current_user, except: [:index, :new, :home, :logout]
+    before_action :find_user, only: [:destroy, :sorting, :edit, :show, :edit_subjects, :update_subjects, :edit_courses]
     def index 
         @users = User.all
     end
@@ -30,9 +31,25 @@ class UsersController < ApplicationController
     end
 
     def edit 
-        
+        if @current != @user
+            redirect_to "/"
+        end
     end
 
+    def update 
+        # @scientist = find_scientist
+        @current.update(user_params)
+        if @current.valid?
+            @current.save
+            redirect_to users_path(@current)
+        else
+            @user = @current
+            render :edit
+        end
+    end
+
+
+    
     def show 
         # @user = User.find(params[:id])
     end
@@ -66,16 +83,36 @@ class UsersController < ApplicationController
         
     end
 
-    def edit_courses
-        if @current == nil
+    # def edit_courses
+    #     if @current == nil
+    #         redirect_to "/"
+    #     end
+    #     @enroll = Enrollment.new
+    # end
+
+    # def update_courses
+    #     byebug
+    #     @enroll = Enrollment.cre
+    # end
+
+    def sorting 
+        
+        if @current == nil && @current!= @user
             redirect_to "/"
         end
-        @enroll = Enrollment.new
+       
+       @current
+
     end
 
-    def update_courses
+    def sorted
         byebug
-        @enroll = Enrollment.cre
+    end
+
+    def destroy
+        @user.destroy
+        @current.destroy
+        redirect_to '/'
     end
 
     private

@@ -26,27 +26,32 @@
 
  #nav_bar {
      margin: auto;
+     padding: 10px;
+     padding-top:15px;
      height: 40px;
      background-color: rgb(31, 46, 60);
      color: white;
      font-family: Arial, Helvetica, sans-serif;
-     font-size: 25px;
+     font-size: 20px;
  }
  #welcome {
      padding-top: 50px;
-     height: calc(100% - 40px);
+     height: calc(100% - 115px);
      font-family: Arial, Helvetica, sans-serif;
      color: white;
      text-align: center;
-     background-image: url("main_back.jpg");
-     /* -webkit-background-size: cover;
-     -moz-background-size: cover;
-     -o-background-size: cover; */
-     background-size: cover;
+     background: url("main_back.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
  }
  
  #welcome_image img {
      width: 450px;
+     -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
      
  }
 
@@ -73,22 +78,230 @@
     color: white;
   }
 
-  #profile_house img {
-    padding-top: 10px;
-      width: 100px;
-  }
 
-  #profile_house h1 {
-    padding-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 80px;
+
+
+#hall_houses {
+  margin-left: auto;
+  margin-right: auto;
+  height: calc(100% - 165px);
+  padding-top: 100px;
+  text-align: center;
+  background: url("greathall.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  font-size: 20px;
+  overflow: auto;
+  
 }
-  #profile_house {
-    height: 150px;
-    /* width: auto; */
-    /* background-image: url("oldpaper.jpg"); */
-    
+
+
+#hall_houses a:link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }
-div.subject_list {
-    margin: 20px;
+
+/* visited link */
+#hall_houses a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+/* mouse over link */
+#hall_houses a:hover {
+  text-decoration: none;
+  color: rgb(1, 153, 255);
+}
+
+/* selected link */
+#hall_houses a:active {
+  text-decoration: none;
+  color: white;
+}
+#hall_Gryffindor {
+  vertical-align: top;
+  width: 200px;
+  display: inline-block;
+  background-color: rgba(130, 13, 13, .8);
+  margin: 20px;
+  padding: 20px;
+  color: white;
+}
+
+#hall_Slytherin {
+  vertical-align: top;
+  width: 200px;
+  display: inline-block;
+  background-color: rgba(23, 116, 42, .8);
+  color: white;
+  margin: 20px;
+  padding: 20px;
+}
+#hall_Ravenclaw {
+  vertical-align: top;
+  width: 200px;
+  display: inline-block;
+  background-color: rgba(3, 26, 155, .8);
+  color: white;
+  margin: 20px;
+  padding: 20px;
+}
+#hall_Hufflepuff {
+  vertical-align: top;
+  width: 200px;
+  display: inline-block;
+  background-color: rgba(216, 186, 11, .8);
+  color: white;
+  margin: 20px;
+  padding: 20px;
+}
+
+#hall_Gryffindor img {
+  width: 200px;
+  margin-top: -70px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+#hall_Slytherin img {
+  width: 200px;
+  margin-top: -70px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+#hall_Ravenclaw img {
+  width: 200px;
+  margin-top: -80px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+#hall_Hufflepuff img {
+  width: 200px;
+  margin-top: -70px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+#students_show {
+  
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  /* text-align: center; */
+  background: url("hogwarts_stairs.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  font-size: 20px;
+  overflow: auto;
+
+}
+
+#student_directory {
+  color:white;
+  width: 600px;
+  margin-left: 50px;
+  padding: 5px 10px 20px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#student_directory a:link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+/* visited link */
+#student_directory a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+/* mouse over link */
+#student_directory a:hover {
+  text-decoration: none;
+  color: rgb(1, 153, 255);
+}
+
+/* selected link */
+#student_directory a:active {
+  text-decoration: none;
+  color: white;
+}
+
+#professor_show {
+  
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  /* text-align: center; */
+  background: url("classroom.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  font-size: 20px;
+  overflow: auto;
+
+}
+
+#user_show_page {
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  /* text-align: center; */
+  background: url("classroom.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  font-size: 20px;
+  overflow: auto;
+
+
+}
+#profile {
+  height: 1000px;
+  
+  background: url("parchment.png") no-repeat;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  
+  font-size: 20px;
+  overflow: auto;
+}
+
+#profile_house img {
+  padding-top: 10px;
+    width: 100px;
+}
+
+#profile_name h1 {
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+}
+#profile_name {
+  vertical-align: top;
+  padding-top:25px;
+  display: inline-block;
+}
+#profile_house {
+  padding-top: 120px;
+  margin-left: 30px;
+  /* width: auto; */
+  /* background-image: url("oldpaper.jpg"); */
+  
+}
+
+#subjects {
+  margin-top: -60px;
+  padding-left: 50px;
 }

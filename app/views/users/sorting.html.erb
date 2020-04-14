@@ -1,0 +1,28 @@
+<%= form_tag sorted_path, :method => :post do %>
+
+<p>Question 1: On the weekend I will...
+<ul>
+<li><%= radio_button_tag("user[quiz][q1]", 4 )%> Work on some labs and go outside</li>
+<li><%= radio_button_tag("user[quiz][q1]", 3 )%> Work on some labs and look up future labs</li>
+<li><%= radio_button_tag("user[quiz][q1]", 2 )%> Finish all my labs and study some more.</li>
+<li><%= radio_button_tag("user[quiz][q1]", 1 )%> Help my friends with their labs.</li>
+</ul>
+
+<p>Question 2: I will finish my blog...
+<ul>
+<li><%= radio_button_tag("user[quiz][q2]", 2 )%> I have 6 weeks of blogs to choose from.</li>
+<li><%= radio_button_tag("user[quiz][q2]", 4 )%> When I think of good topic</li>
+<li><%= radio_button_tag("user[quiz][q2]", 3 )%> 8:59 a.m. on thursday morning</li>
+<li><%= radio_button_tag("user[quiz][q2]", 1 )%> Hold on, I'm proofreading my friends blog</li>
+</ul>
+
+<p>Question 3: I prefer to be
+<ul>
+<li><%= radio_button_tag("user[quiz][q3]", 4 )%> Gryffindor.</li>
+<li><%= radio_button_tag("user[quiz][q3]", 3 )%> Slytherin</li>
+<li><%= radio_button_tag("user[quiz][q3]", 2 )%> Ravenclaw</li>
+<li><%= radio_button_tag("user[quiz][q3]", 1 )%> Hufflepuff</li>
+</ul>
+<%= submit_tag %>
+
+<% end %>

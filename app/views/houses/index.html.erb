@@ -1,18 +1,31 @@
 
-<div>
-    <div>
 
+    <div id="hall_houses">
+    <div>
     <% @houses.each do |house| %>
-        <h2><%= house.name  %></h2>
-        <h3>Professors</h3>
-        <% house.users.each do |user| %>
-        <div> <%= link_to user.name, user_path(user) if user.professor %> </div>
-        <% end %>
-        <h3>Students</h3>
-        <% house.users.each do |user| %>
-        <div> <%= link_to user.name, user_path(user) if !user.professor %></div>
-        <% end %>
+        <div id="hall_<%= house.name %>">
+            <%= image_tag(house.img) %>
+            <h2>House Points</h2>
+            <h2><%= house.points  %></h2>
+            <% if @current && @current.professor %>
+                <%= form_for house, url: add_points_path(house), :method => :post do |f| %>
+                <%= f.number_field :points, :value => 0%>
+                <%= f.submit "Adjust Points"%>
+                <% end %>
+            <% end %>
+            <h3>Professors</h3>
+            <% house.users.each do |user| %>
+            <div> <%= link_to user.name, user_path(user) if user.professor %> </div>
+            <% end %>
+            <h3>Students</h3>
+            <% house.users.each do |user| %>
+            <div> <%= link_to user.name, user_path(user) if !user.professor %></div>
+            <% end %>
+            <BR>
+            
+        </div>
     <% end %>
+        </div>
     </div>
-</div>
+
 

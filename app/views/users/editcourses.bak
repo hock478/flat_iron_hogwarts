@@ -11,7 +11,7 @@
 
 <%= form_with url: update_courses_path(@user), method: :post do |f|  %>
 
-         <%= f.collection_select(:user_ids, User.all_students, :id, :name) %>
+         <%= f.collection_select(:user, :user_ids, User.all_students, :id, :name) %>
 <%= f.submit "Add to Class"%>
 <% end %>
 <% if @enroll %>

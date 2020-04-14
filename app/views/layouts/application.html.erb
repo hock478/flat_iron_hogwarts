@@ -10,16 +10,19 @@
   </head>
 
   <body>
-    <% if session[:user_id] %>
+   
     <div id="nav_bar">
-      <%= link_to "Home", "/" %> | <%= link_to "Houses", houses_path %> | <%= link_to "New User", new_user_path %> | <%= link_to "ALL STUDENTS", students_path %> | <%= link_to "All Professors", professors_path %> | <%= link_to "LOGOUT FIRST", logout_path, :method => :post %>
-      </div>
-    <% else %>
-    <div id="nav_bar">
-      <%= link_to "Home", "/" %> | <%= link_to "Houses", houses_path %> | <%= link_to "New User", new_user_path %> | <%= link_to "ALL STUDENTS", students_path %> | <%= link_to "All Professors", professors_path %> | <%= link_to "Log In", login_path %>
-      </div>
-    <% end %>
- 
+      <%= link_to "Home", "/" %> | 
+      <%= link_to "Houses", houses_path %> |
+      <%= link_to "All Students", students_path %> |
+      <%= link_to "All Professors", professors_path %> |  
+      <% if session[:user_id] %>
+        <%= link_to "Logout", logout_path, :method => :post %>
+      <% else %>
+        <%= link_to "New User", new_user_path %> | 
+        <%= link_to "Log In", login_path %>
+      <% end %>
+    </div>
 
     <%= yield %>
 

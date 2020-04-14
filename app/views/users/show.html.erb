@@ -1,31 +1,40 @@
-<div id="profile_house">
-    <% if !@user.house %> 
-        <div> You are Unsorted!!!</div>
-    <% else %>
-        <div style="width: 100px; float: left">
-            <div><%= image_tag(@user.house.img) %></div>
-            <div style="text-align: center"><%= @user.house.name %></div>
+<div id="user_show_page">
+<div id="profile">
+    <div id="profile_house">
+        <% if !@user.house %> 
+            <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
+                <div><%= image_tag("sortinghat.png") %></div>
+                <div style="text-align: center">Get Sorted!</div>
+            </div>
+        <% else %>
+            <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
+                <div><%= image_tag(@user.house.img) %></div>
+                <div style="text-align: center"><%= @user.house.name %></div>
+            </div>
+        <% end %>
+        <div id="profile_name">
+            <h1><%= @user.name %> </h1>
+            <div style="margin-top: -30px"><%= link_to "Edit My Account", edit_user_path(@user) if @user == @current%></div>
         </div>
-<% end %>
+    </div>
 
-    <h1><%= @user.name %> </h1>
+<br>
+    <div id="subjects">
+    <% if !@user.professor? %>
+        <h3>Is learning:</h3>
+        <% @user.subjects.each do |sub| %>
+            <div><%= sub.name %> with <%= sub.professor.name %></div>
+        <% end %>
+    <% else %>
+        <h3>Teaches</h3>
+        <% @user.courses.each do |course| %>
+            <div><%= link_to course.name, subject_path(course) %></div>
+            
+        <% end %>
+    <% end %>
+
+    <br>
+    <%= link_to "Edit Subjects", edit_subjects_path(@user) if @user == @current && !@current.professor%>
+    </div>
 </div>
-
-<br>
-<div class="subject_list">
-<% if !@user.professor? %>
-    <h3>Subjects</h3>
-    <% @user.subjects.each do |sub| %>
-        <div><%= sub.name %> with <%= sub.professor.name %></div>
-    <% end %>
-<% else %>
-    <h3>Teaches</h3>
-    <% @user.courses.each do |course| %>
-        <div><%= link_to course.name, subject_path(course) %></div>
-        
-    <% end %>
-<% end %>
-
-<br>
-<%= link_to "Edit Subjects", edit_subjects_path(@user) if @user == @current%>
 </div>

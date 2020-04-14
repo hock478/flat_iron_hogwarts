@@ -9,3 +9,10 @@
 <div><%= f.password_field :password_confirmation %></div>
 <div><%= f.submit %></div>
 <% end %>
+<%= link_to "Join the Muggles and leave Hogwarts", user_path(@user), :method => :delete %>
+
+<% if @current.errors %>
+    <% @current.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+<% end %>

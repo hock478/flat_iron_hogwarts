@@ -1,3 +1,8 @@
+<div id="professor_show">
+    <div id="student_directory">
+    <h2>Professor Directory</h2>
 <% @professors.each do |professor| %>
 <div><%= link_to professor.name, user_path(professor) %></div>
-<% end %>
+   <% end %>
+    </div>
+</div>

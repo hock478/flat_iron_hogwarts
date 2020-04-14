@@ -1,0 +1,18 @@
+
+<div>
+    <div>
+
+    <% @houses.each do |house| %>
+        <h2><%= house.name  %></h2>
+        <h3>Professors</h3>
+        <% house.users.each do |user| %>
+        <div> <%= link_to user.name, user_path(user) if user.professor %> </div>
+        <% end %>
+        <h3>Students</h3>
+        <% house.users.each do |user| %>
+        <div> <%= link_to user.name, user_path(user) if !user.professor %></div>
+        <% end %>
+    <% end %>
+    </div>
+</div>
+

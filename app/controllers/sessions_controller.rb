@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
-    skip_before_filter :set_current_user
+    # skip_before_filter :set_current_user
+
+    def new
+        # byebug
+        @user = User.new
+        
+    end
 
     def create  
         @user = User.find_by(email: login_params[:email])
@@ -9,7 +15,7 @@ class SessionsController < ApplicationController
         else    
             flash[:login_errors] = ['invalid credentials']
             @user = User.new
-            redirect_to new_user_path
+            redirect_to login_path
         end
     end
 

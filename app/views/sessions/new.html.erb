@@ -1,0 +1,20 @@
+"WORKING ROUTE"
+<%= @string %>
+<%= form_for @user, url: login_path, method: :post do |f| %>
+
+<div><%= f.label :email %></div>
+<div><%= f.email_field :email %></div>
+
+<div><%= f.label :password %></div>
+<div><%= f.password_field :password %></div>
+
+<div><%= f.submit %></div>
+<% end %>
+
+<div class="errors">
+            <% if flash[:login_errors] %>
+                <% flash[:login_errors].each do |error| %>
+                    <p><%= error %></p>
+                <% end %>
+            <% end %>
+        </div>

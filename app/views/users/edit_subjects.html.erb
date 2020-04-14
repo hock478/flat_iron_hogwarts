@@ -1,7 +1,7 @@
 <div>
 <h2><%= @user.name %></h2>
-<% @user.subjects.each do |x| %>
-    <div><%= x.name %> with <%= x.professor.name %></div>
+<% @user.subjects.each do |sub| %>
+    <div><%= sub.name %> with <%= sub.professor.name %> | <%= link_to "Leave Class", enrollment_path(sub.enrollments.find_by(student: @user)), :method => :delete %></div>
 <% end %>
 </div>
 

@@ -1,4 +1,9 @@
 <h1> Hi <%= @user.name %> </h1>
+<% if !@user.house %> 
+<div> You are Unsorted!!!</div>
+<% else %>
+<div><%= @user.house.name %></div>
+<% end %>
 
 <% if !@user.professor? %>
     <% @user.subjects.each do |sub| %>
@@ -7,6 +12,7 @@
 <% else %>
     <% @user.courses.each do |course| %>
         <div><%= course.name %></div>
+        <div><%= "edit course button goes here" if @current == @user %></div>
         <% course.students.each do |student| %>
            <div> <%= student.name %></div>
         <% end %>
@@ -14,4 +20,4 @@
 <% end %>
 
 <br>
-<%= link_to "Edit Subjects", edit_subjects_path(@user) %>
+<%= link_to "Edit Subjects", edit_subjects_path(@user) if @user == @current%>

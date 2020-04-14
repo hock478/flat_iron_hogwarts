@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:edit, :show, :edit_subjects, :update_subjects]
+    before_action :find_user, only: [:edit, :show, :edit_subjects, :update_subjects, :edit_courses]
     def index 
         @users = User.all
     end
@@ -44,7 +44,9 @@ class UsersController < ApplicationController
     end
 
     def edit_subjects
-
+        if @current == nil
+            redirect_to "/"
+        end
     end
 
     def update_subjects
@@ -56,6 +58,22 @@ class UsersController < ApplicationController
         else   
             render :edit_subjects
         end
+        
+    end
+
+
+    def home
+        
+    end
+
+    def edit_courses
+        if @current == nil
+            redirect_to "/"
+        end
+    end
+
+    def update_courses
+
         
     end
 

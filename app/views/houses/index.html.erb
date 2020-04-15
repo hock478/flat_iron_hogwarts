@@ -4,7 +4,11 @@
     <div>
     <% @houses.each do |house| %>
         <div id="hall_<%= house.name %>">
+            <% if @current.house == house %>
+            <%= link_to image_tag(house.img), house_path(house)%>
+            <% else %>
             <%= image_tag(house.img) %>
+            <% end %>
             <h2>House Points</h2>
             <h2><%= house.points  %></h2>
             <% if @current && @current.professor %>

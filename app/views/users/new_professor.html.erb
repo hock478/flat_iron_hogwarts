@@ -1,0 +1,27 @@
+<div id="login_page">
+    <div id="edit_form">
+        <%= form_for @user , url: '/professors' do |f| %>
+            Name<br>
+            <%= f.text_field :name %><br>
+            Email<br>
+            <%= f.email_field :email %><br>
+            <%= f.fields_for :courses do |sub| %>
+                <div>
+                    <%= sub.label "I will teach" %><br>
+                    <%= sub.text_field :name, value: "Course Name"%>
+                </div>
+            <% end %>
+            Password<br>
+            <%= f.password_field :password %><br>
+            Password Confirmation<br>
+            <%= f.password_field :password_confirmation %><br>
+            <%= f.hidden_field :professor, :value => 'true' %>
+            <%= f.submit %>
+        <% end %>
+        <% if @user.errors %>
+            <% @user.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+        <% end %>
+    </div>
+</div>

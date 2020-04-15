@@ -29,12 +29,13 @@
         <h3>Teaches</h3>
         <% @user.courses.each do |course| %>
             <div><%= link_to course.name, subject_path(course) %></div>
-            
         <% end %>
+            <br>
+            <div><%= link_to "Add a Course", new_subject_path if @current == @user %>
     <% end %>
 
     <br>
-    <%= link_to "Edit Subjects", edit_subjects_path(@user) if @user == @current && !@current.professor%>
+    <%= link_to "Edit Subjects", student_edit_subjects_path(@user) if @user == @current && !@current.professor%>
     </div>
 </div>
 </div>

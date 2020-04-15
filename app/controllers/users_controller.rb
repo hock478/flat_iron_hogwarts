@@ -11,8 +11,23 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
-    def new_teacher
+    def new_professor
         @user = User.new
+        @user.courses.build
+    end
+
+    def create_professor
+        
+        @user = User.new(user_params)
+        # byebug
+        if @user.valid?
+            @user.save
+            session[:user_id] = @user.id
+            redirect_to sorting_hat_path(@user)
+        else
+            
+            render :new_professor
+        end
     end
 
     def professors
@@ -67,7 +82,7 @@ class UsersController < ApplicationController
         @enroll = Enrollment.create(subject_id: params[:user][:subject_ids], student: @user)
         if @enroll.valid?
             @enroll.save
-            redirect_to user_path(@user)
+            redirect_to student_edit_subjects_path(@current)
         else   
             render :edit_subjects
         end
@@ -96,7 +111,7 @@ class UsersController < ApplicationController
 
     def destroy
         @user.destroy
-        @current.destroy
+        session.delete :user_id
         redirect_to '/'
     end
 
@@ -107,7 +122,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :password, :email, :password_confirmation, :professor, :house_id, :subject_ids, :quiz, :q1, :q2, :q3, :q4)
+        params.require(:user).permit(:name, :password, :email, :password_confirmation, :professor, :house_id, :subject_ids, :quiz, :q1, :q2, :q3, :q4, courses_attributes: :name )
     end
 
 end

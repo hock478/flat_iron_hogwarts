@@ -16,6 +16,9 @@ class HousesController < ApplicationController
         redirect_to houses_path
     end
 
+    def show 
+        @house = House.find(params[:id])
+    end
     private
 
     def house_params

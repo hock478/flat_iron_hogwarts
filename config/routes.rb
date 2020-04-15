@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :enrollments
   resources :subjects
   resources :houses
@@ -9,8 +10,9 @@ Rails.application.routes.draw do
   post '/logout', to: "sessions#destroy", as: "logout"
   get '/professors', to: "users#professors"
   get '/students', to: "users#students"
-  get '/students/:id/edit_subjects', to: "users#edit_subjects", as: 'edit_subjects'
+  get '/students/:id/edit_subjects', to: "users#edit_subjects", as: 'student_edit_subjects'
   post '/students/:id', to: "users#update_subjects", as: 'update_subjects'
+  post '/enrollments/:id', to: "enrollments#destroy_student", as: 'enrollment_student'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/', to: "users#home", as: "home"
@@ -25,4 +27,6 @@ Rails.application.routes.draw do
   post '/add_points/:id', to: "houses#add_points", as: "add_points"
   get '/users/:id/sorted', to: "users#sorting", as: "sorting_hat"
   post 'sorted', to: "users#sorted"
+  get '/professor/new', to: "users#new_professor"
+  post 'professors', to: "users#create_professor"
 end

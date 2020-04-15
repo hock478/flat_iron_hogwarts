@@ -2,12 +2,13 @@
 <div id="edit_form">
 <h3>New Student Form</h3>
 <%= render partial: "form_new" %>
-Joining as a Teacher? Click Here
+
+Joining as a Teacher? <%= link_to "Click Here", professor_new_path %>
 
 <% if @user.errors %>
   <% @user.errors.full_messages.each do |message| %>
   <%= message %>
   <% end %>
-  <% end %>
+<% end %>
 </div>
 </div>

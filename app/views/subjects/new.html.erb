@@ -1,0 +1,12 @@
+<%= form_for @subject do |s| %>
+    <%= s.label :name %>
+    <%= s.text_field :name %>
+    <%= s.hidden_field :professor_id, :value => @current.id %>
+    <%= s.submit %>
+<% end %>
+
+<%= render partial: "shared/error_list", locals: {new_object: @subject} %>
+
+
+
+

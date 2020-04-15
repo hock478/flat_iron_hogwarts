@@ -1,4 +1,16 @@
 <h2><%= @subject.name %></h2>
+<% if @current == @subject.professor %>
+    <%= form_for @subject do |f| %>
+    <%= f.label "Subject Name" %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+        <% if @subject.errors %>
+            <% @subject.errors.full_messages.each do |message| %>
+                <%= message %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
 <h3><%= @subject.professor.name %></h3>
 <% @subject.students.each do |student| %>
 <div><%= student.name %><%= link_to "Remove From Class", enrollment_path(@subject.enrollments.find_by(student: student)), :method => :delete if @current == @subject.professor %></div>
@@ -10,6 +22,8 @@
             <%= f.collection_select(:student_ids, User.all_students, :id, :name) %>
     <%= f.submit "Add to Class"%>
     <% end %>
+    
+    <div><%= link_to "Delete This Subject", subject_path(@subject), :method => :delete %></div>
 
     <% if @enroll %>
         <% if @enroll.errors%>

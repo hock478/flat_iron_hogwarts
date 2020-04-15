@@ -1,0 +1,13 @@
+<%= form_for @user , url: '/users' do |f| %>
+  Username<br>
+  <%= f.text_field :name %><br>
+  Email<br>
+  <%= f.email_field :email %><br>
+  <!--Professor Logging In?: <%= f.text_field :professor %>-->
+  Password<br>
+  <%= f.password_field :password %><br>
+  Password Confirmation<br>
+  <%= f.password_field :password_confirmation %><br>
+  
+  <%= f.submit "Join!" %><br>
+<% end %>

@@ -1,15 +1,13 @@
-<%= form_for @user , url: '/users' do |f| %>
-  Username: <%= f.text_field :name %>
-  Email: <%= f.email_field :email %>
-  Professor Logging In?: <%= f.text_field :professor %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  
-  <%= f.submit "Submit" %>
-<% end %>
+<div id="login_page">
+<div id="edit_form">
+<h3>New Student Form</h3>
+<%= render partial: "form_new" %>
+Joining as a Teacher? Click Here
 
 <% if @user.errors %>
   <% @user.errors.full_messages.each do |message| %>
   <%= message %>
   <% end %>
   <% end %>
+</div>
+</div>

@@ -1,5 +1,7 @@
-"WORKING ROUTE"
-<%= @string %>
+
+<div id="login_page">
+<div id="edit_form">
+<H2>Log In</h2>
 <%= form_for @user, url: login_path, method: :post do |f| %>
 
 <div><%= f.label :email %></div>
@@ -8,7 +10,7 @@
 <div><%= f.label :password %></div>
 <div><%= f.password_field :password %></div>
 
-<div><%= f.submit %></div>
+<div><%= f.submit "Log In" %></div>
 <% end %>
 
 <div class="errors">
@@ -17,4 +19,6 @@
                     <p><%= error %></p>
                 <% end %>
             <% end %>
-        </div>
+</div>
+</div>
+</div>

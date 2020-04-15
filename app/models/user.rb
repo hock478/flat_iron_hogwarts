@@ -15,4 +15,21 @@ class User < ApplicationRecord
         students
    end
 
+   def sort_me(num)
+     if num <= 5
+          house = "Hufflepuff"
+     elsif num >=6 && num <=9
+          house = "Ravenclaw"
+     elsif num >=10 && num <=13
+          house = "Slytherin"
+     else  
+          house = "Gryffindor"
+     end
+     self.update(house: House.find_by(name: house))
+     self.save
+   end
 end
+
+ 
+ 
+ 

@@ -1,28 +1,52 @@
-<%= form_tag sorted_path, :method => :post do %>
+<div id="sorting_page">
+    <div id="sorting_form">
+    <%= form_tag sorted_path, :method => :post do %>
+    <div id="question">
+    <p>Question 1: On the weekend I will...
 
-<p>Question 1: On the weekend I will...
-<ul>
-<li><%= radio_button_tag("user[quiz][q1]", 4 )%> Work on some labs and go outside</li>
-<li><%= radio_button_tag("user[quiz][q1]", 3 )%> Work on some labs and look up future labs</li>
-<li><%= radio_button_tag("user[quiz][q1]", 2 )%> Finish all my labs and study some more.</li>
-<li><%= radio_button_tag("user[quiz][q1]", 1 )%> Help my friends with their labs.</li>
-</ul>
+    <div><%= radio_button_tag("user[quiz][q1]", 4 )%> Work on some labs and go walk outside.</div>
+    <div><%= radio_button_tag("user[quiz][q1]", 3 )%> Work on some labs and go shopping</div>
+    <div><%= radio_button_tag("user[quiz][q1]", 2 )%> Finish all my labs and study some more.</div>
+    <div><%= radio_button_tag("user[quiz][q1]", 1 )%> Help my friends with their labs.</div>
+    </div>
+    <div id="question">
+    <p>Question 2: I will finish my blog...
 
-<p>Question 2: I will finish my blog...
-<ul>
-<li><%= radio_button_tag("user[quiz][q2]", 2 )%> I have 6 weeks of blogs to choose from.</li>
-<li><%= radio_button_tag("user[quiz][q2]", 4 )%> When I think of good topic</li>
-<li><%= radio_button_tag("user[quiz][q2]", 3 )%> 8:59 a.m. on thursday morning</li>
-<li><%= radio_button_tag("user[quiz][q2]", 1 )%> Hold on, I'm proofreading my friends blog</li>
-</ul>
+    <div><%= radio_button_tag("user[quiz][q2]", 2 )%> Hold on, I'm proofreading my friends blog</div>
+    <div><%= radio_button_tag("user[quiz][q2]", 4 )%> When I think of good topic</div>
+    <div><%= radio_button_tag("user[quiz][q2]", 3 )%> 8:59 a.m. on thursday morning</div>
+    <div><%= radio_button_tag("user[quiz][q2]", 1 )%> I have 6 weeks of blogs to choose from.</div>
+    </div>
+    <div id="question">
+    <p>Question 3: During Breaks I...
 
-<p>Question 3: I prefer to be
-<ul>
-<li><%= radio_button_tag("user[quiz][q3]", 4 )%> Gryffindor.</li>
-<li><%= radio_button_tag("user[quiz][q3]", 3 )%> Slytherin</li>
-<li><%= radio_button_tag("user[quiz][q3]", 2 )%> Ravenclaw</li>
-<li><%= radio_button_tag("user[quiz][q3]", 1 )%> Hufflepuff</li>
-</ul>
-<%= submit_tag %>
+    <div><%= radio_button_tag("user[quiz][q3]", 4 )%> What's a break?</div>
+    <div><%= radio_button_tag("user[quiz][q3]", 3 )%> Take a "quick" nap.</div>
+    <div><%= radio_button_tag("user[quiz][q3]", 2 )%> Snack.</div>
+    <div><%= radio_button_tag("user[quiz][q3]", 1 )%> Walk my dog.</div>
+    </div>
+    <div id="question">
+    <p>Question 3: For lab examples...Song Artist Genre
 
-<% end %>
+    <div><%= radio_button_tag("user[quiz][q4]", 4 )%> Don't ever show them to me again!</div>
+    <div><%= radio_button_tag("user[quiz][q4]", 3 )%> I love music!!!</div>
+    <div><%= radio_button_tag("user[quiz][q4]", 2 )%> Harry and the Potters. Best Band Ever.</div>
+    <div><%= radio_button_tag("user[quiz][q4]", 1 )%> I love em! Consistency is Key!</div>
+    </div>
+    <br>
+    <%= submit_tag "Sort Me!"%>
+
+    <% end %>
+    </div>
+    <div id="sorting_form">
+    <div>I dont trust the sorting hat</div>
+        <%= form_tag sorted_path, :method => :post do %>
+        
+        <div><%= radio_button_tag("user[quiz][q1]", "Gryffindor" )%> Gryffindor.</div>
+        <div><%= radio_button_tag("user[quiz][q1]", "Slytherin" )%> Slytherin</div>
+        <div><%= radio_button_tag("user[quiz][q1]", "Ravenclaw" )%> Ravenclaw</div>
+        <div><%= radio_button_tag("user[quiz][q1]", "Hufflepuff" )%> Hufflepuff</div>
+        <%= submit_tag "Sort Me!"%>
+        <% end %>
+    </div>
+</div>

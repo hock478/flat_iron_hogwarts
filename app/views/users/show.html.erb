@@ -4,7 +4,7 @@
         <% if !@user.house %> 
             <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
                 <div><%= image_tag("sortinghat.png") %></div>
-                <div style="text-align: center">Get Sorted!</div>
+                <div style="text-align: center"><%= link_to "Get Sorted!", sorting_hat_path(@user) if @current == @user %></div>
             </div>
         <% else %>
             <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">

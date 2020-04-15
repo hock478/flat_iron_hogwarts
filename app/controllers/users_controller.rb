@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
-    before_action :set_current_user, except: [:index, :new, :home, :logout]
+    before_action :set_current_user, except: [:index, :new, :home]
     before_action :find_user, only: [:destroy, :sorting, :edit, :show, :edit_subjects, :update_subjects, :edit_courses]
+    
+    
     def index 
         @users = User.all
     end
 
     def new 
+        @user = User.new
+    end
+
+    def new_teacher
         @user = User.new
     end
 
@@ -24,7 +30,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to sorting_hat_path(@user)
         else
             render :new
         end
@@ -37,27 +43,18 @@ class UsersController < ApplicationController
     end
 
     def update 
-        # @scientist = find_scientist
-        @current.update(user_params)
-        if @current.valid?
-            @current.save
-            redirect_to users_path(@current)
+        @user = @current
+        @user.update(user_params)
+        if @user.valid?
+            @user.save
+            redirect_to user_path(@user)
         else
-            @user = @current
+            
             render :edit
         end
     end
 
-
-    
     def show 
-        # @user = User.find(params[:id])
-    end
-
-    def logout
-      
-        session.delete :user_id
-        redirect_to "/"
     end
 
     def edit_subjects
@@ -67,7 +64,6 @@ class UsersController < ApplicationController
     end
 
     def update_subjects
-        # byebug
         @enroll = Enrollment.create(subject_id: params[:user][:subject_ids], student: @user)
         if @enroll.valid?
             @enroll.save
@@ -75,38 +71,27 @@ class UsersController < ApplicationController
         else   
             render :edit_subjects
         end
-        
     end
-
 
     def home
-        
     end
 
-    # def edit_courses
-    #     if @current == nil
-    #         redirect_to "/"
-    #     end
-    #     @enroll = Enrollment.new
-    # end
-
-    # def update_courses
-    #     byebug
-    #     @enroll = Enrollment.cre
-    # end
-
     def sorting 
-        
-        if @current == nil && @current!= @user
+        if @current == nil || @current != @user
             redirect_to "/"
         end
-       
-       @current
-
     end
 
     def sorted
-        byebug
+        @user = @current
+        if !params[:user][:quiz][:q2] && !params[:user][:quiz][:q3] && !params[:user][:quiz][:q4]
+          @user.update(house: House.find_by(name: params[:user][:quiz][:q1]))
+            @user.save
+        else
+        answer = params[:user][:quiz][:q1].to_i +params[:user][:quiz][:q2].to_i + params[:user][:quiz][:q3].to_i + params[:user][:quiz][:q4].to_i 
+         @user.sort_me(answer)
+        end
+        redirect_to user_path(@user)
     end
 
     def destroy
@@ -120,13 +105,9 @@ class UsersController < ApplicationController
     def find_user
         @user = User.find(params[:id])
     end
-    
-    def id_params
-        params.permit(:user_ids)
-    end
 
     def user_params
-        params.require(:user).permit(:name, :password, :email, :password_confirmation, :professor, :house_id, :subject_ids)
+        params.require(:user).permit(:name, :password, :email, :password_confirmation, :professor, :house_id, :subject_ids, :quiz, :q1, :q2, :q3, :q4)
     end
 
 end

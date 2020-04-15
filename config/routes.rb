@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # resources :sessions
 
   get '/login' => "sessions#new", as: 'login'
-  post '/logout', to: "users#logout", as: "logout"
+  post '/logout', to: "sessions#destroy", as: "logout"
   get '/professors', to: "users#professors"
   get '/students', to: "users#students"
   get '/students/:id/edit_subjects', to: "users#edit_subjects", as: 'edit_subjects'

@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 2020_04_15_162435) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "student_id"
+    t.integer "user_id"
     t.integer "house_id"
+    t.text "content"
     t.date "posted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

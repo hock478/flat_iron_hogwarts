@@ -1,1 +1,25 @@
-<div id="<%= house.name"></div>
+<div id="<%= @house.name%>_show">
+    <div>
+        <%= @house.name %>
+    </div>
+    <div>
+        <% @house.posts.order("created_at DESC").each do |post| %>
+            <div><%= post.content %></div>
+            <div>Posted by: <%= post.user.name %></div>
+            <div><%= distance_of_time_in_words(post.created_at, Time.now)  %> ago</div>
+        <% end %>
+    </div>
+    <div>
+        <div><%= form_for @post do |f|%></div>
+        <div><%= f.label "Create new Post" %></div>
+        <div><%= f.text_area :content %></div>
+        <div><%= f.hidden_field :user_id, :value => @current.id %></div>
+        <div><%= f.hidden_field :house_id, :value => @current.house.id %></div>
+        <div><%= f.submit %></div>
+    <% end %>
+
+    </div>
+
+
+
+</div>

@@ -684,3 +684,19 @@ div.house_logo img {
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
 }
+
+div.subject_page {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  
+  background: url("subject1.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  overflow: auto;
+}

@@ -13,10 +13,11 @@
    
     <div id="nav_bar">
       <%= link_to "Home", "/" %> | 
-      <%= link_to "Houses", houses_path %> |
+      <%= link_to "The Great Hall", houses_path %> |
       <%= link_to "All Students", students_path %> |
       <%= link_to "All Professors", professors_path %> |  
       <% if session[:user_id] %>
+      
         <%= link_to "My Page", user_path(session[:user_id]) %> |
         <%= link_to "Logout", logout_path, :method => :post %> 
       <% else %>

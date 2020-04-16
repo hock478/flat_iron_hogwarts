@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friends
   resources :likes
   resources :comments
   resources :posts
@@ -32,5 +33,6 @@ Rails.application.routes.draw do
   get '/professor/new', to: "users#new_professor"
   post 'professors', to: "users#create_professor"
   post '/unlike', to: "likes#unlike", as: "unlike"
+  post '/unfriend', to: "friends#unfriend", as: "unfriend"
 end
 

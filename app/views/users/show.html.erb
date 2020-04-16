@@ -42,6 +42,43 @@
 
     <br>
     <%= link_to "Edit Subjects", student_edit_subjects_path(@user) if @user == @current && !@current.professor%>
+    <div class="not_real_just_holder">
+        <% if @current == @user %>
+            pending
+            <% Friend.pending(@current).each do |x| %>
+                <div>
+                    
+                    <%= form_for @friend do |f| %>
+                    <%= x.name %>
+                    <%= f.hidden_field :follow_id, :value => x.id %>
+                    <%= f.hidden_field :follower_id, :value => @current.id %>
+                    <%= f.submit "Accept" %>
+                    <% end %>
+                </div>
+            <% end %>
+            my friends<br>
+            <% Friend.customthing(@current).each do |x| %>
+                <%= link_to x.name, user_path(x) %>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="friend_button">
+        <% if @current != @user && @current%>
+            <% if !Friend.find_by(follow: @user, follower:@current) %>
+                <%= form_for @friend do |f| %>
+                <%= f.hidden_field :follow_id, :value => @user.id %>
+                <%= f.hidden_field :follower_id, :value => @current.id %>
+                <%= f.submit "Add Friend" %>
+                <% end %>
+            <% else %>
+                <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
+                <%= f.hidden_field :follow_id, :value => @user.id %>
+                <%= f.hidden_field :follower_id, :value => @current.id %>
+                <%= f.submit "Delete Friend" %>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
     </div>
 </div>
 </div>

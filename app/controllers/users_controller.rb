@@ -70,6 +70,7 @@ class UsersController < ApplicationController
     end
 
     def show 
+        @friend = Friend.new
     end
 
     def edit_subjects

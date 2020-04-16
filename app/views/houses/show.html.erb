@@ -1,6 +1,10 @@
 <div id="<%= @house.name%>_show">
     <div class="<%= @house.name%>_house_info">
         <div class="house_info">
+            <div class="house_logo">
+            <%= image_tag(@house.img) %>
+            </div>
+
         <h2>Professors</h2>
             <% @house.users.each do |user| %>
             <div> <%= link_to user.name, user_path(user) if user.professor %> </div>
@@ -36,14 +40,34 @@
                         <div>Like Button Here</div>
                     </div>
                     <div>
-                        comment submit Here
+                        <% post.comments.each do |comment|%>
+                            <div class="each_comment">
+                                <%= comment.user.name %> commented: <%= comment.content %><br>
+                                <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+                            </div>
+                        <% end %>
                     </div>
+                    <div>
+                        <div class="comments">
+                            <div>
+                            <%= form_for @comment do |f| %>
+                
+                            
+                                <%= f.text_field :content, :value => "Enter a comment" %>
+                                <%= f.hidden_field :user_id, :value => @current.id %>
+                                <%= f.hidden_field :post_id, :value => post.id %>
+                            </div>
+                            <div class="submit_post">
+                                <%= f.submit "add Comment"%>
+                            </div>
+                            <% end %>
+                        </div>
+                </div>
                 </div>
             <% end %>
         </div>
     </div>
    
-
 
 
 </div>

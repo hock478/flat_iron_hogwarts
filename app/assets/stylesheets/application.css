@@ -327,7 +327,7 @@
   background-size: cover;
   background-color: black;
   font-size: 20px;
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 #edit_form {
@@ -344,7 +344,7 @@
   display: inline-block;
 }
 #edit_form input {
-  align: center;
+  /* align: center; */
   width: 200px;
   color: white;
   background-color: rgba(23, 94, 135, 0.44);
@@ -512,7 +512,7 @@ div.Slytherin_house_info {
   border: 2px double rgb(210, 210, 210);
   border-radius: 23px;
   overflow: auto;
- 214831723
+
 }
 
 #Ravenclaw_show {
@@ -553,7 +553,7 @@ div.Ravenclaw_house_info {
   border: 2px double rgb(145, 225, 254);
   border-radius: 23px;
   overflow: auto;
- 214831723
+
 }
 
 #Hufflepuff_show {
@@ -594,7 +594,7 @@ div.Hufflepuff_house_info {
   border: 2px double rgba(0, 0, 0, 0.555);
   border-radius: 23px;
   overflow: auto;
- 214831723
+
 }
 #submit_post{
   color:white;
@@ -653,4 +653,33 @@ div.house_info a:hover {
 div.house_info a:active {
   text-decoration: none;
   color: white;
+}
+
+div.comments {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.comments input[type=text] {
+  color:white;
+  font-size: 18px;
+  border: none;
+  width: 420px;
+  height: 20px;
+  padding: 2px;
+  background-color: rgba(0, 0, 0, 0.303);
+}
+
+div.each_comment {
+  margin: 10px 0px;
+  padding: 5px 5px;
+  background-color: rgba(96, 96, 96, 0.523);
+}
+
+div.house_logo img {
+  /* margin-top: 200px; */
+  margin: 0px 0px 0px 40px;
+  width: 175px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
 }

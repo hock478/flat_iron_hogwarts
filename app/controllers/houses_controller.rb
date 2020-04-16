@@ -19,6 +19,7 @@ class HousesController < ApplicationController
     def show 
         @house = House.find(params[:id])
         @post = Post.new
+        @comment = Comment.new
     end
     private
 

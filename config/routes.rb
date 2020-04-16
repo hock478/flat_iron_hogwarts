@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
   resources :comments
   resources :posts
   resources :enrollments
@@ -30,4 +31,6 @@ Rails.application.routes.draw do
   post 'sorted', to: "users#sorted"
   get '/professor/new', to: "users#new_professor"
   post 'professors', to: "users#create_professor"
+  post '/unlike', to: "likes#unlike", as: "unlike"
 end
+

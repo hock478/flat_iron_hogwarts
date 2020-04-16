@@ -8,7 +8,13 @@
             </div>
         <% else %>
             <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
-                <div><%= image_tag(@user.house.img) %></div>
+                <div>
+                <% if @current == @user %>
+                <%= link_to image_tag(@user.house.img), house_path(@current.house) %>
+                <% else %>
+                <%= image_tag(@user.house.img) %>
+                <% end %>
+                </div>
                 <div style="text-align: center"><%= @user.house.name %></div>
             </div>
         <% end %>

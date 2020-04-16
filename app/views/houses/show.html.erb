@@ -17,7 +17,7 @@
     </div>
     <div id="<%=@house.name%>_house_posts">
         <div id="submit_post">
-            <div><%= form_for @post do |f|%></div>
+            <div><%= form_for @post do |f|%>
                 <div><%= f.label "Say Something" %></div>
                 <div><%= f.text_area :content, :cols => 106, :rows => 5 %></div>
                 <%= f.hidden_field :user_id, :value => @current.id %>
@@ -26,6 +26,7 @@
                     <%= f.submit %>
                 </div>
                 <% end %>
+            </div>
         </div>
         <div class="posts">
             <% @house.posts.order("created_at DESC").each do |post| %>
@@ -34,10 +35,31 @@
                         <div><span style="font-size: 30px"><%= post.user.name %></span> says...</div>
                         <div><%= distance_of_time_in_words(post.created_at, Time.now)  %> ago</div>
                     </div>
-                    <div class="post_content"><%= post.content %></div>
+                    <div class="post_content">
+                        <%= post.content %>
+                    </div>
                     <div class="post_like">
-                        <div>Like Counter Here</div>
-                        <div>Like Button Here</div>
+                        <div>
+                            <%= post.display_likes(@current) %>
+                        </div>
+                            <% if !Like.find_by(post: post, user: @current) %>
+                                <div>
+                                    <%= form_for @like do |l| %>
+                                    <%= l.hidden_field :user_id, :value => @current.id %>
+                                    <%= l.hidden_field :post_id, :value => post.id %>
+                                    <%= l.submit "Like" %>
+                                    <% end %>
+                                </div>
+                            <% else %>
+                                <div>
+                                 
+                                  <%= form_for @like, :url => {:controller => "likes", :action => "unlike"} do |l| %> 
+                                    <%= l.hidden_field :user_id, :value => @current.id %>
+                                    <%= l.hidden_field :post_id, :value => post.id %>
+                                    <%= l.submit "Unlike" %>
+                                    <% end %>
+                                </div>
+                            <% end %>
                     </div>
                     <div>
                         <% post.comments.each do |comment|%>
@@ -48,21 +70,23 @@
                         <% end %>
                     </div>
                     <div>
-                        <div class="comments">
-                            <div>
-                            <%= form_for @comment do |f| %>
-                
+                        <div>
                             
-                                <%= f.text_field :content, :value => "Enter a comment" %>
-                                <%= f.hidden_field :user_id, :value => @current.id %>
-                                <%= f.hidden_field :post_id, :value => post.id %>
-                            </div>
-                            <div class="submit_post">
-                                <%= f.submit "add Comment"%>
+                            <%= form_for @comment do |f| %>
+                            <div class="comments">
+                                <div>
+                                    <%= f.text_field :content, :placeholder => "Enter a comment", :autocomplete => "off" %>
+                                    <%= f.hidden_field :user_id, :value => @current.id %>
+                                    <%= f.hidden_field :post_id, :value => post.id %>
+                                </div>
+                                <div class="submit_post">
+                                    <%= f.submit "add Comment"%>
+                                </div>
                             </div>
                             <% end %>
+                            
                         </div>
-                </div>
+                    </div>
                 </div>
             <% end %>
         </div>

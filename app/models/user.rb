@@ -7,6 +7,7 @@ class User < ApplicationRecord
      has_many :students, through: :courses, :foreign_key => "professor_id"
      has_many :posts
      has_many :comments
+     has_many :likes
      belongs_to :house, optional: true
      validates :name, presence: true
      validates :email, presence: true, uniqueness: {case_sensitive: false}

@@ -20,7 +20,9 @@ class HousesController < ApplicationController
         @house = House.find(params[:id])
         @post = Post.new
         @comment = Comment.new
+        @like = Like.new
     end
+    
     private
 
     def house_params

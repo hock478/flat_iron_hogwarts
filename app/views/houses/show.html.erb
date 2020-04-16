@@ -1,5 +1,6 @@
 <div id="<%= @house.name%>_show">
-    <div class="house_info">
+    <div class="<%= @house.name%>_house_info">
+        <div class="house_info">
         <h2>Professors</h2>
             <% @house.users.each do |user| %>
             <div> <%= link_to user.name, user_path(user) if user.professor %> </div>
@@ -8,6 +9,7 @@
             <% @house.users.each do |user| %>
             <div> <%= link_to user.name, user_path(user) if !user.professor %></div>
             <% end %>
+        </div>
     </div>
     <div id="<%=@house.name%>_house_posts">
         <div id="submit_post">

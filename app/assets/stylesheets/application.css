@@ -459,6 +459,143 @@
   border-radius: 23px;
   overflow: auto;
 }
+
+div.Gryffindor_house_info {
+  display: flexbox;
+  margin-left: 25px;
+  width: 250px;
+  color:white;
+  justify-content: center;
+  background-color: rgba(94, 1, 1, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgb(255, 229, 79);
+  border-radius: 23px;
+  overflow: auto;
+
+}
+
+#Slytherin_show {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  
+  background: url("s_common_room.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  overflow: auto;
+}
+
+#Slytherin_house_posts {
+  display: flexbox;
+  margin-left: 50px;
+  justify-content: center;
+  background-color: rgba(21, 74, 32, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgb(210, 210, 210);
+  border-radius: 23px;
+  overflow: auto;
+}
+
+div.Slytherin_house_info {
+  display: flexbox;
+  margin-left: 25px;
+  width: 250px;
+  color:white;
+  justify-content: center;
+  background-color: rgba(21, 74, 32, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgb(210, 210, 210);
+  border-radius: 23px;
+  overflow: auto;
+ 214831723
+}
+
+#Ravenclaw_show {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  
+  background: url("r_common_room.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  overflow: auto;
+}
+
+#Ravenclaw_house_posts {
+  display: flexbox;
+  margin-left: 50px;
+  justify-content: center;
+  background-color: rgba(20, 35, 85, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgb(145, 225, 254);
+  border-radius: 23px;
+  overflow: auto;
+}
+
+div.Ravenclaw_house_info {
+  display: flexbox;
+  margin-left: 25px;
+  width: 250px;
+  color:white;
+  justify-content: center;
+  background-color: rgba(20, 35, 85, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgb(145, 225, 254);
+  border-radius: 23px;
+  overflow: auto;
+ 214831723
+}
+
+#Hufflepuff_show {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  
+  background: url("h_common_room.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  overflow: auto;
+}
+
+#Hufflepuff_house_posts {
+  display: flexbox;
+  margin-left: 50px;
+  justify-content: center;
+  background-color: rgba(191, 167, 33, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgba(0, 0, 0, 0.555);
+  border-radius: 23px;
+  overflow: auto;
+}
+
+div.Hufflepuff_house_info {
+  display: flexbox;
+  margin-left: 25px;
+  width: 250px;
+  color:white;
+  justify-content: center;
+  background-color: rgba(191, 167, 33, 0.749);
+  padding: 20px 10px 20px 10px;
+  border: 2px double rgba(0, 0, 0, 0.555);
+  border-radius: 23px;
+  overflow: auto;
+ 214831723
+}
 #submit_post{
   color:white;
   width: 550px;
@@ -485,6 +622,7 @@ div.post_content {
   margin: 5px 0px 5px 0px;
   padding: 5px;
   font-size: 25px;
+  width:525px;
 }
 
 div.post_like {
@@ -492,19 +630,7 @@ div.post_like {
     justify-content: space-between;
     margin: 5px 0px 5px 0px;
 }
-div.house_info {
-  display: flexbox;
-  margin-left: 25px;
-  width: 250px;
-  color:white;
-  justify-content: center;
-  background-color: rgba(94, 1, 1, 0.749);
-  padding: 20px 10px 20px 10px;
-  border: 2px double rgb(255, 229, 79);
-  border-radius: 23px;
-  overflow: auto;
 
-}
 div.house_info a:link {
   font-size: 20px;
   text-decoration: none;

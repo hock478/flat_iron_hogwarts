@@ -1,24 +1,46 @@
 <div id="<%= @house.name%>_show">
-    <div>
-        <%= @house.name %>
+    <div class="house_info">
+        <h2>Professors</h2>
+            <% @house.users.each do |user| %>
+            <div> <%= link_to user.name, user_path(user) if user.professor %> </div>
+            <% end %>
+            <h2>Students</h2>
+            <% @house.users.each do |user| %>
+            <div> <%= link_to user.name, user_path(user) if !user.professor %></div>
+            <% end %>
     </div>
-    <div>
-        <% @house.posts.order("created_at DESC").each do |post| %>
-            <div><%= post.content %></div>
-            <div>Posted by: <%= post.user.name %></div>
-            <div><%= distance_of_time_in_words(post.created_at, Time.now)  %> ago</div>
-        <% end %>
+    <div id="<%=@house.name%>_house_posts">
+        <div id="submit_post">
+            <div><%= form_for @post do |f|%></div>
+                <div><%= f.label "Say Something" %></div>
+                <div><%= f.text_area :content, :cols => 106, :rows => 5 %></div>
+                <%= f.hidden_field :user_id, :value => @current.id %>
+                <%= f.hidden_field :house_id, :value => @current.house.id %>
+                <div class="submit_post">
+                    <%= f.submit %>
+                </div>
+                <% end %>
+        </div>
+        <div class="posts">
+            <% @house.posts.order("created_at DESC").each do |post| %>
+                <div class="individual_post">
+                    <div>
+                        <div><span style="font-size: 30px"><%= post.user.name %></span> says...</div>
+                        <div><%= distance_of_time_in_words(post.created_at, Time.now)  %> ago</div>
+                    </div>
+                    <div class="post_content"><%= post.content %></div>
+                    <div class="post_like">
+                        <div>Like Counter Here</div>
+                        <div>Like Button Here</div>
+                    </div>
+                    <div>
+                        comment submit Here
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
-    <div>
-        <div><%= form_for @post do |f|%></div>
-        <div><%= f.label "Create new Post" %></div>
-        <div><%= f.text_area :content %></div>
-        <div><%= f.hidden_field :user_id, :value => @current.id %></div>
-        <div><%= f.hidden_field :house_id, :value => @current.house.id %></div>
-        <div><%= f.submit %></div>
-    <% end %>
-
-    </div>
+   
 
 
 

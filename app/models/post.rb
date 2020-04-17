@@ -10,15 +10,12 @@ class Post < ApplicationRecord
         self.likes.each {|like| users << like.user}
         num = users.length
         if users.length > 2
-            if selflike
-            user1 = user
-            else 
+            users.delete(selflike.user) if selflike
             user1 = users.sample()
-            users.remove(user1)
+            users.delete(user1)
             user2 = users.sample()
-            return "👍 You, #{user2.name} and #{num.length - 2} others liked this post" if selflike
-            return "👍 #{user1.name}, #{user2.name} and #{num.length - 2} others liked this post"
-            end
+            return "👍 You, #{user2.name} and #{num - 2} others liked this post" if selflike
+            return "👍 #{user1.name}, #{user2.name} and #{num - 2} others liked this post"
         elsif users.length == 2
             return "👍 You and #{users[0].name} liked this post" if selflike
             return "👍#{users[0].name} and #{users[1].name} liked this post" 

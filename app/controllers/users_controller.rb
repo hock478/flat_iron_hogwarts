@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
+            set_current_user
             redirect_to sorting_hat_path(@user)
         else
             
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
+            set_current_user
             redirect_to sorting_hat_path(@user)
         else
             render :new

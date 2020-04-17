@@ -8,7 +8,7 @@
             <%= f.fields_for :courses do |sub| %>
                 <div>
                     <%= sub.label "I will teach" %><br>
-                    <%= sub.text_field :name, value: "Course Name"%>
+                    <%= sub.text_field :name, placeholder: "Course Name"%>
                 </div>
             <% end %>
             Password<br>

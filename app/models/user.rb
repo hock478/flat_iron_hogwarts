@@ -15,6 +15,7 @@ class User < ApplicationRecord
         :foreign_key => 'follower_id'
 
      belongs_to :house, optional: true
+     has_many :messages
      validates :name, presence: true
      validates :email, presence: true, uniqueness: {case_sensitive: false}
      accepts_nested_attributes_for :courses

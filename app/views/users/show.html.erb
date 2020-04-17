@@ -54,6 +54,11 @@
                     <%= f.hidden_field :follower_id, :value => @current.id %>
                     <%= f.submit "Accept" %>
                     <% end %>
+                    <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
+                    <%= f.hidden_field :follow_id, :value => @current.id %>
+                    <%= f.hidden_field :follower_id, :value => x.id %>
+                    <%= f.submit "Delete Friend" %>
+                    <% end %>
                 </div>
             <% end %>
             my friends<br>
@@ -79,6 +84,24 @@
             <% end %>
         <% end %>
     </div>
+    <div id="chat_place_holder">
+    <% if @current %>
+        <% if Friend.friend?(@user, @current) %>
+            <div>
+                <%= form_for @message do |m| %>
+                <%= m.hidden_field :sender_id, :value => @current.id %>
+                <%= m.hidden_field :receiver_id, :value => @user.id %>
+                <%= m.text_field :content %>
+                <%= m.submit "send" %>
+                <% end %>
+            </div>
+            <div>
+                <% Message.chat(@current, @user).sort_by{|t| -t[:id]}.each do |message| %>
+                <div><%= User.find(message.sender_id).name %> said <%= message.content %></div>
+                <% end %>
+            </div>
+        <% end %>
+    <% end %>
     </div>
 </div>
 </div>

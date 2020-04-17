@@ -71,6 +71,7 @@ class UsersController < ApplicationController
 
     def show 
         @friend = Friend.new
+        @message = Message.new
     end
 
     def edit_subjects

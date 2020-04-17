@@ -3,6 +3,8 @@ class Friend < ApplicationRecord
         :foreign_key => 'follow_id'
     belongs_to :follower, :class_name => 'User', 
         :foreign_key => 'follower_id'
+    has_many :chats
+    has_many :messages, through: :chats
 
 
         def customhelper
@@ -13,6 +15,12 @@ class Friend < ApplicationRecord
             my_friends_array = []
             user.followed.each {|x| my_friends_array << x.follower if x.customhelper}
             my_friends_array
+        end
+
+        def self.friend?(user, current)
+          
+            friend = Friend.find_by(follow: user, follower: current)
+            friend.customhelper if friend
         end
 
         def self.pending(current)

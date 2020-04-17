@@ -18,9 +18,10 @@ class Friend < ApplicationRecord
         end
 
         def self.friend?(user, current)
-          
+            
             friend = Friend.find_by(follow: user, follower: current)
-            friend.customhelper if friend
+            return friend.customhelper if friend
+            return false if !friend
         end
 
         def self.pending(current)

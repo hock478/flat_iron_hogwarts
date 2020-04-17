@@ -47,7 +47,7 @@
                     <% if !@user.professor? %>
                         <h3>Is learning:</h3>
                         <% @user.subjects.each do |sub| %>
-                            <div><%= sub.name %> with <%= sub.professor.name %></div>
+                            <div id="sub_name"><%= link_to sub.name, subject_path(sub) %></div><div  id="profsub"> with <span> <%= link_to sub.professor.name, user_path(sub.professor) %></span></div>
                         <% end %>
                     <% else %>
                         <h3>Teaches</h3>
@@ -64,11 +64,11 @@
             </div>
 
         </div>           
-        <% if @current %>        
+        <% if @current%>        
         <div id="right">
-            
+            <% if @current == @user %>
             <div id="friends">
-                <% if @current == @user %>
+                
                     <% if @user.followers.count != 0 || @user.followed.count != 0 %>
                     <h3>Pending Friend Requests:</h3>
                     <% end %>
@@ -92,12 +92,14 @@
                     <% Friend.customthing(@current).each do |x| %>
                         <%= link_to x.name, user_path(x) %>
                     <% end %>
-                <% end %>
+                
             </div>
-            
+            <% end %>
+            <% if Friend.friend?(@user, @current) %>
             <div id="chat_place_holder">
-                <% if @current %>
-                    <% if Friend.friend?(@user, @current) %>
+                
+                    
+                    
                         <div id="chat_field">
                             <h3>Chat Window</h3>
                             <%= form_for @message do |m| %>
@@ -130,10 +132,10 @@
                                 <% end %>
                             <% end %>
                         </div>
-                    <% end %>
-                <% end %>
+                    
+                
             </div>
-            
+            <% end %>
         </div>
         <% end %>
         

@@ -16,11 +16,17 @@ class HousesController < ApplicationController
         redirect_to houses_path
     end
 
-    def show 
+    def show
+        if @current.house.id != params[:id].to_i
+            redirect_to house_path(@current.house)
+        elsif !@current
+            redirect_to '/'
+        else  
         @house = House.find(params[:id])
         @post = Post.new
         @comment = Comment.new
         @like = Like.new
+        end
     end
     
     private

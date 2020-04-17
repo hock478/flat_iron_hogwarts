@@ -282,8 +282,38 @@
 #left {
   display:flex;
   order: 1;
+  
+  height: 650px;
 }
 #right {
+  /* color: white;
+  margin-left: 0px;
+  background-color: rgba(0, 0, 0, 0.536);
+  padding-bottom: 200px;
+  border: 5px double rgb(42, 66, 126);
+  border-radius: 25px;
+  border-color: rgba(225, 225, 225, 0.824);
+  font-size: 20px;
+  overflow: auto;
+  width: 300px;
+  padding: 20px 10px 10px 10px;
+  margin-left: 120px; */
+}
+#friends {
+  color: white;
+  margin-left: 0px;
+  background-color: rgba(0, 0, 0, 0.536);
+  padding-bottom: 200px;
+  border: 5px double rgb(42, 66, 126);
+  border-radius: 25px;
+  border-color: rgba(225, 225, 225, 0.824);
+  font-size: 20px;
+  overflow: auto;
+  width: 300px;
+  padding: 20px 10px 10px 10px;
+  margin-left: 120px;
+}
+#chat_place_holder {
   color: white;
   margin-left: 0px;
   background-color: rgba(0, 0, 0, 0.536);
@@ -312,7 +342,7 @@
   border-radius: 25px;
   border-color: rgba(225, 225, 225, 0.824);
   font-size: 20px;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 #profile_house img {
@@ -375,6 +405,7 @@ margin-top: -25px;
   width: 240px;
 }
 #chat_window {
+  height: 500px;
   overflow: auto;
 }
 .time_message {
@@ -385,6 +416,7 @@ margin-top: -25px;
   justify-content: center;
 }
 .left_message {
+  margin-right: 5px;
   display: flex;
   justify-content: flex-start;
 }
@@ -402,7 +434,7 @@ margin-top: -25px;
   display: flex;
   flex-flow: column;
   align-items: flex-end;
-  
+  margin-right: 5px;
   /* justify-content: flex-start; */
 }
 .right_bubble {
@@ -418,8 +450,70 @@ margin-top: -25px;
 
 #subjects {
   margin-top: -60px;
-  padding-left: 20px;
+  
+  /* padding-left: 20px; */
+  height: 400px;
+  overflow: auto;
+  
 }
+
+#sub_name {
+  font-size: 20px;
+  
+}
+div#sub_name a:link {
+  font-size: 25px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+/* visited link */
+#sub_name a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+/* mouse over link */
+#sub_name a:hover {
+  text-decoration: none;
+  color: rgb(1, 153, 255);
+}
+
+/* seed link */
+#sub_name a:active {
+  text-decoration: none;
+  color: white;
+}
+
+
+#profsub {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#profsub a:link {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(103, 189, 255);
+}
+
+/* visited link */
+#profsub a:visited {
+  text-decoration: none;
+  color: rgb(103, 189, 255);
+}
+
+/* mouse over link */
+#profsub a:hover {
+  text-decoration: none;
+  color: rgb(233, 233, 233);
+}
+
+/* seed link */
+#profsub a:active {
+  text-decoration: none;
+  color: white;
+}
+
 
 #edit_page {
   height: calc(100% - 95px);
@@ -726,15 +820,23 @@ div.individual_post {
 div.post_content {
   background-color: rgba(96, 96, 96, 0.392);
   margin: 5px 0px 5px 0px;
-  padding: 5px;
+  padding: 10px 10px;
   font-size: 25px;
   width:525px;
+  border-radius: 10px;
 }
 
 div.post_like {
     display: flex;
     justify-content: space-between;
     margin: 5px 0px 5px 0px;
+    
+}
+
+div.post_like input[type=submit] {
+  background-color: rgb(100, 148, 203);
+  color: white;
+  border-radius: 6px;
 }
 
 div.house_info a:link {
@@ -778,10 +880,13 @@ div.comments input[type=text] {
 }
 
 div.each_comment {
-  width: 525px;
-  margin: 10px 0px;
-  padding: 5px 5px;
-  background-color: rgba(96, 96, 96, 0.523);
+  
+  background-color: rgba(96, 96, 96, 0.392);
+  margin: 5px 0px 5px 0px;
+  padding: 10px 10px;
+  font-size: 15px;
+  width:520px;
+  border-radius: 10px;
 }
 
 div.house_logo img {

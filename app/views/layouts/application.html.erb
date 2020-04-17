@@ -17,7 +17,7 @@
       <%= link_to "All Students", students_path %> |
       <%= link_to "All Professors", professors_path %> |  
       <% if session[:user_id] %>
-      
+        <%= link_to "My Common Room", house_path(User.find(session[:user_id]).house) %> |
         <%= link_to "My Page", user_path(session[:user_id]) %> |
         <%= link_to "Logout", logout_path, :method => :post %> 
       <% else %>

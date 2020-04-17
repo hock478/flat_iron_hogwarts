@@ -52,7 +52,7 @@
                     <% else %>
                         <h3>Teaches</h3>
                         <% @user.courses.each do |course| %>
-                            <div><%= link_to course.name, subject_path(course) %></div>
+                            <div id="sub_name"><%= link_to course.name, subject_path(course) %></div>
                         <% end %>
                             <br>
                             <div><%= link_to "Add a Course", new_subject_path if @current == @user %></div>

@@ -308,6 +308,7 @@
   border-radius: 25px;
   border-color: rgba(225, 225, 225, 0.824);
   font-size: 20px;
+  height: 600px;
   overflow: auto;
   width: 300px;
   padding: 20px 10px 10px 10px;

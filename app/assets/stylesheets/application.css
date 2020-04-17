@@ -16,7 +16,7 @@
 
  html {
      height: 100%;
-     width: 100%;
+     /* width: 100%; */
  }
 
  body {
@@ -261,6 +261,7 @@
 #user_show_page {
   height: calc(100% - 95px);
   padding-top: 30px;
+  color: white;
   
   /* text-align: center; */
   background: url("esired.jpg") no-repeat center center fixed; 
@@ -271,18 +272,45 @@
   background-color: black;
   font-size: 20px;
   overflow: auto;
-
-
 }
-#profile {
-  height: 1000px;
+#flex_box {
+  display: flex;
+  justify-content: flex-start;
+  /* flex-direction: row; */
+  justify-content: space-between;
+}
+#left {
+  display:flex;
+  order: 1;
+}
+#right {
+  color: white;
+  margin-left: 0px;
+  background-color: rgba(0, 0, 0, 0.536);
+  padding-bottom: 200px;
+  border: 5px double rgb(42, 66, 126);
+  border-radius: 25px;
+  border-color: rgba(225, 225, 225, 0.824);
+  font-size: 20px;
+  overflow: auto;
+  width: 300px;
+  padding: 20px 10px 10px 10px;
+  margin-left: 120px;
+}
+.profile {
+  color: white;
+  margin-left: 70px;
+  background-color: rgba(0, 0, 0, 0.536);
+  padding-bottom: 200px;
   
-  background: url("parchment.png") no-repeat;
+  /* background: url("parchment.png") center center no-repeat;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
-  background-size: contain;
- 
+  background-size: contain; */
+  border: 5px double rgb(42, 66, 126);
+  border-radius: 25px;
+  border-color: rgba(225, 225, 225, 0.824);
   font-size: 20px;
   overflow: auto;
 }
@@ -299,20 +327,52 @@
 }
 #profile_name {
   vertical-align: top;
-  padding-top:25px;
+  padding-top: 25px;
   display: inline-block;
 }
 #profile_house {
-  padding-top: 120px;
-  margin-left: 30px;
+  padding-top: 10px;
+  padding-right: 50px;
+  margin-left: 20px;
   /* width: auto; */
   /* background-image: url("oldpaper.jpg"); */
   
 }
 
+#friends {
+ 
+}
+.friend_button {
+margin-top: -25px;
+}
+#user_show_page a:link {
+  font-size: 18px;
+  text-decoration: none;
+  color: rgb(30, 203, 255);
+}
+
+/* visited link */
+#user_show_page a:visited {
+  text-decoration: none;
+  color: rgb(30, 203, 255);
+}
+
+/* mouse over link */
+#user_show_page a:hover {
+  text-decoration: none;
+  color: rgb(231, 245, 255);
+}
+
+/* selected link */
+#user_show_page a:active {
+  text-decoration: none;
+  color: white;
+}
+
+
 #subjects {
   margin-top: -60px;
-  padding-left: 50px;
+  padding-left: 20px;
 }
 
 #edit_page {
@@ -672,6 +732,7 @@ div.comments input[type=text] {
 }
 
 div.each_comment {
+  width: 525px;
   margin: 10px 0px;
   padding: 5px 5px;
   background-color: rgba(96, 96, 96, 0.523);
@@ -700,3 +761,40 @@ div.subject_page {
   background-color: black;
   overflow: auto;
 }
+
+#subject_style {
+  color:white;
+  width: 600px;
+  margin-left: 50px;
+  padding: 5px 10px 20px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+}
+
+#subject_style a:link {
+  text-decoration: none;
+  color: rgb(89, 174, 249);
+}
+
+/* visited link */
+#subject_style a:visited {
+  text-decoration: none;
+  color: rgb(89, 174, 249);
+}
+
+/* mouse over link */
+#subject_style a:hover {
+  text-decoration: none;
+  color: rgb(123, 123, 123);
+}
+
+/* selected link */
+#subject_style a:active {
+  text-decoration: none;
+  color: white;
+}
+
+.error {
+  color: red;
+}
+

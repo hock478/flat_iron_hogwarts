@@ -1,25 +1,26 @@
-<div>
-<h2><%= @user.name %></h2>
-<% @user.subjects.each do |sub| %>
-    <div><%= sub.name %> with <%= sub.professor.name %> | <%= link_to "Leave Class", enrollment_student_path(sub.enrollments.find_by(student: @user)), :method => :post %></div>
-<% end %>
+<div class="subject_page">
+    <div id="subject_style">
+        <h2><%= @user.name %></h2>
+        <% @user.subjects.each do |sub| %>
+            <div><span style="font-size: 25px"><%= sub.name %></span> with <span style="font-size: 20px"><%= sub.professor.name %></span> | <%= link_to "Leave Class", enrollment_student_path(sub.enrollments.find_by(student: @user)), :method => :post %></div>
+        <% end %>
+
+
+        <%= form_for @user, url: update_subjects_path(@user), method: :post do |f|  %>
+                <%= f.collection_select(:subject_ids, Subject.all, :id, :name) do |b|%>
+                
+                        <% end %>
+            
+        <p><%= f.submit %>
+        <% end %>
+        <div class="error">
+        <% if @enroll %>
+        <% if @enroll.errors%>
+            <%@enroll.errors.full_messages.each do |x| %>
+                <%= x %>
+            <% end %>
+        <% end %>
+        <% end %>
+        </div>
+    </div>
 </div>
-
-<%= form_for @user, url: update_subjects_path(@user), method: :post do |f|  %>
-        <%= f.collection_select(:subject_ids, Subject.all, :id, :name) do |b|%>
-          
-                <% end %>
-    
-   
-
-
-
-<p><%= f.submit %>
-<% end %>
-<% if @enroll %>
-<% if @enroll.errors%>
-    <%@enroll.errors.full_messages.each do |x| %>
-        <%= x %>
-    <% end %>
-<% end %>
-<% end %>

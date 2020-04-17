@@ -1,5 +1,6 @@
 <div class="subject_page">
-    <h2><%= @subject.name %></h2>
+    <div id="subject_style">
+    <h1><%= @subject.name %></h1>
     <% if @current == @subject.professor %>
         <%= form_for @subject do |f| %>
         <%= f.label "Subject Name" %>
@@ -12,16 +13,17 @@
             <% end %>
         <% end %>
     <% end %>
-    <h3><%= @subject.professor.name %></h3>
+    
+    <h2><%= @subject.professor.name %></h2>
     <% @subject.students.each do |student| %>
-    <div><%= student.name %><%= link_to "Remove From Class", enrollment_path(@subject.enrollments.find_by(student: student)), :method => :delete if @current == @subject.professor %></div>
+    <div><span style="font-size: 25px"><%= student.name %></span>  <span style="color: blue"><%= link_to "Remove From Class", enrollment_path(@subject.enrollments.find_by(student: student)), :method => :delete if @current == @subject.professor %></span></div>
     <% end %>
-
+    <br>
     <% if @current == @subject.professor %>
         <%= form_for @subject, url: update_course_path(@subject), method: :post do |f|  %>
 
-                <%= f.collection_select(:student_ids, User.all_students, :id, :name) %>
-        <%= f.submit "Add to Class"%>
+            <%= f.collection_select(:student_ids, User.all_students, :id, :name) %>
+            <%= f.submit "Add to Class"%>
         <% end %>
         
         <div><%= link_to "Delete This Subject", subject_path(@subject), :method => :delete %></div>
@@ -32,4 +34,5 @@
             <% end %>
         <% end %>
     <% end %>
-</div>>
+    </div>
+</div>

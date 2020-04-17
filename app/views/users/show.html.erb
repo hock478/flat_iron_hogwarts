@@ -1,107 +1,119 @@
 <div id="user_show_page">
-<div id="profile">
-    <div id="profile_house">
-        <% if !@user.house %> 
-            <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
-                <div><%= image_tag("sortinghat.png") %></div>
-                <div style="text-align: center"><%= link_to "Get Sorted!", sorting_hat_path(@user) if @current == @user %></div>
+    <div id="flex_box">
+        <div id="left">
+            <div class="profile">
+                <div id="profile_house">
+                
+                    <% if !@user.house %> 
+                        <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
+                            <div><%= image_tag("sortinghat.png") %></div>
+                            <div style="text-align: center"><%= link_to "Get Sorted!", sorting_hat_path(@user) if @current == @user %></div>
+                        </div>
+                    <% else %>
+                        <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
+                            <div>
+                                <% if @current == @user %>
+                                <%= link_to image_tag(@user.house.img), house_path(@current.house) %>
+                                <% else %>
+                                <%= image_tag(@user.house.img) %>
+                                <% end %>
+                            </div>
+                            <div style="text-align: center"><%= @user.house.name %>
+                            </div>
+                        </div>
+                    <% end %>
+                    <div id="profile_name">
+                        <h1><%= @user.name %> </h1> <div class="friend_button">
+                <% if @current != @user && @current%>
+                    <% if !Friend.find_by(follow: @user, follower:@current) %>
+                        <%= form_for @friend do |f| %>
+                        <%= f.hidden_field :follow_id, :value => @user.id %>
+                        <%= f.hidden_field :follower_id, :value => @current.id %>
+                        <%= f.submit "Add Friend" %>
+                        <% end %>
+                    <% else %>
+                        
+                        <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
+                        <%= f.hidden_field :follow_id, :value => @user.id %>
+                        <%= f.hidden_field :follower_id, :value => @current.id %>
+                        <%= f.submit "Delete Friend" %>
+                        <% end %>
+                    <% end %>
+                <% end %>
             </div>
-        <% else %>
-            <div style="width: 100px; margin: 10px; height: 200px; display: inline-block; vertical-align: top;">
-                <div>
+                        <div style="margin-top: -30px"><%= link_to "Edit My Account", edit_user_path(@user) if @user == @current%></div>
+                    </div>
+                    <div id="subjects">
+                    <% if !@user.professor? %>
+                        <h3>Is learning:</h3>
+                        <% @user.subjects.each do |sub| %>
+                            <div><%= sub.name %> with <%= sub.professor.name %></div>
+                        <% end %>
+                    <% else %>
+                        <h3>Teaches</h3>
+                        <% @user.courses.each do |course| %>
+                            <div><%= link_to course.name, subject_path(course) %></div>
+                        <% end %>
+                            <br>
+                            <div><%= link_to "Add a Course", new_subject_path if @current == @user %>
+                    <% end %>
+
+                    <br>
+                    <%= link_to "Edit Subjects", student_edit_subjects_path(@user) if @user == @current && !@current.professor%>
+                </div>
+            </div>
+
+        </div>           
+                
+        <div id="right">
+            <div id="friends">
                 <% if @current == @user %>
-                <%= link_to image_tag(@user.house.img), house_path(@current.house) %>
-                <% else %>
-                <%= image_tag(@user.house.img) %>
+                    Pending Friend Requests:
+                    <% Friend.pending(@current).each do |x| %>
+                        <div>
+                            
+                            <%= form_for @friend do |f| %>
+                            <%= x.name %>
+                            <%= f.hidden_field :follow_id, :value => x.id %>
+                            <%= f.hidden_field :follower_id, :value => @current.id %>
+                            <%= f.submit "Accept" %>
+                            <% end %>
+                            <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
+                            <%= f.hidden_field :follow_id, :value => @current.id %>
+                            <%= f.hidden_field :follower_id, :value => x.id %>
+                            <%= f.submit "Delete Friend" %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                    my friends<br>
+                    <% Friend.customthing(@current).each do |x| %>
+                        <%= link_to x.name, user_path(x) %>
+                    <% end %>
                 <% end %>
-                </div>
-                <div style="text-align: center"><%= @user.house.name %></div>
             </div>
-        <% end %>
-        <div id="profile_name">
-            <h1><%= @user.name %> </h1>
-            <div style="margin-top: -30px"><%= link_to "Edit My Account", edit_user_path(@user) if @user == @current%></div>
+            
+            <div id="chat_place_holder">
+                <% if @current %>
+                    <% if Friend.friend?(@user, @current) %>
+                        <div id="chat_window">
+                            <h3>Chat Window</h3>
+                            <%= form_for @message do |m| %>
+                            <%= m.hidden_field :sender_id, :value => @current.id %>
+                            <%= m.hidden_field :receiver_id, :value => @user.id %>
+                            <%= m.text_field :content %>
+                            <%= m.submit "send" %>
+                            <% end %>
+                        </div>
+                        <div>
+                            <% Message.chat(@current, @user).sort_by{|t| -t[:id]}.each do |message| %>
+                            <div><%= User.find(message.sender_id).name %> said <%= message.content %></div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
         </div>
+        
+        
     </div>
-
-<br>
-    <div id="subjects">
-    <% if !@user.professor? %>
-        <h3>Is learning:</h3>
-        <% @user.subjects.each do |sub| %>
-            <div><%= sub.name %> with <%= sub.professor.name %></div>
-        <% end %>
-    <% else %>
-        <h3>Teaches</h3>
-        <% @user.courses.each do |course| %>
-            <div><%= link_to course.name, subject_path(course) %></div>
-        <% end %>
-            <br>
-            <div><%= link_to "Add a Course", new_subject_path if @current == @user %>
-    <% end %>
-
-    <br>
-    <%= link_to "Edit Subjects", student_edit_subjects_path(@user) if @user == @current && !@current.professor%>
-    <div class="not_real_just_holder">
-        <% if @current == @user %>
-            pending
-            <% Friend.pending(@current).each do |x| %>
-                <div>
-                    
-                    <%= form_for @friend do |f| %>
-                    <%= x.name %>
-                    <%= f.hidden_field :follow_id, :value => x.id %>
-                    <%= f.hidden_field :follower_id, :value => @current.id %>
-                    <%= f.submit "Accept" %>
-                    <% end %>
-                    <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
-                    <%= f.hidden_field :follow_id, :value => @current.id %>
-                    <%= f.hidden_field :follower_id, :value => x.id %>
-                    <%= f.submit "Delete Friend" %>
-                    <% end %>
-                </div>
-            <% end %>
-            my friends<br>
-            <% Friend.customthing(@current).each do |x| %>
-                <%= link_to x.name, user_path(x) %>
-            <% end %>
-        <% end %>
-    </div>
-    <div class="friend_button">
-        <% if @current != @user && @current%>
-            <% if !Friend.find_by(follow: @user, follower:@current) %>
-                <%= form_for @friend do |f| %>
-                <%= f.hidden_field :follow_id, :value => @user.id %>
-                <%= f.hidden_field :follower_id, :value => @current.id %>
-                <%= f.submit "Add Friend" %>
-                <% end %>
-            <% else %>
-                <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
-                <%= f.hidden_field :follow_id, :value => @user.id %>
-                <%= f.hidden_field :follower_id, :value => @current.id %>
-                <%= f.submit "Delete Friend" %>
-                <% end %>
-            <% end %>
-        <% end %>
-    </div>
-    <div id="chat_place_holder">
-    <% if @current %>
-        <% if Friend.friend?(@user, @current) %>
-            <div>
-                <%= form_for @message do |m| %>
-                <%= m.hidden_field :sender_id, :value => @current.id %>
-                <%= m.hidden_field :receiver_id, :value => @user.id %>
-                <%= m.text_field :content %>
-                <%= m.submit "send" %>
-                <% end %>
-            </div>
-            <div>
-                <% Message.chat(@current, @user).sort_by{|t| -t[:id]}.each do |message| %>
-                <div><%= User.find(message.sender_id).name %> said <%= message.content %></div>
-                <% end %>
-            </div>
-        <% end %>
-    <% end %>
-    </div>
-</div>
 </div>

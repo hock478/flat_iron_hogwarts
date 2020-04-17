@@ -55,7 +55,7 @@
                             <div><%= link_to course.name, subject_path(course) %></div>
                         <% end %>
                             <br>
-                            <div><%= link_to "Add a Course", new_subject_path if @current == @user %>
+                            <div><%= link_to "Add a Course", new_subject_path if @current == @user %></div>
                     <% end %>
 
                     <br>
@@ -64,13 +64,16 @@
             </div>
 
         </div>           
-                
+        <% if @current %>        
         <div id="right">
+            
             <div id="friends">
                 <% if @current == @user %>
-                    Pending Friend Requests:
+                    <% if @user.followers.count != 0 || @user.followed.count != 0 %>
+                    <h3>Pending Friend Requests:</h3>
+                    <% end %>
                     <% Friend.pending(@current).each do |x| %>
-                        <div>
+                        <div class="friend_request">
                             
                             <%= form_for @friend do |f| %>
                             <%= x.name %>
@@ -81,11 +84,11 @@
                             <%= form_for @friend, :url => {:controller => "friends", :action => "unfriend"} do |f| %>
                             <%= f.hidden_field :follow_id, :value => @current.id %>
                             <%= f.hidden_field :follower_id, :value => x.id %>
-                            <%= f.submit "Delete Friend" %>
+                            <%= f.submit "Deny" %>
                             <% end %>
                         </div>
                     <% end %>
-                    my friends<br>
+                        <h3>My Friends</h3>
                     <% Friend.customthing(@current).each do |x| %>
                         <%= link_to x.name, user_path(x) %>
                     <% end %>
@@ -95,7 +98,7 @@
             <div id="chat_place_holder">
                 <% if @current %>
                     <% if Friend.friend?(@user, @current) %>
-                        <div id="chat_window">
+                        <div id="chat_field">
                             <h3>Chat Window</h3>
                             <%= form_for @message do |m| %>
                             <%= m.hidden_field :sender_id, :value => @current.id %>
@@ -104,16 +107,35 @@
                             <%= m.submit "send" %>
                             <% end %>
                         </div>
-                        <div>
+                        <div id="chat_window">
                             <% Message.chat(@current, @user).sort_by{|t| -t[:id]}.each do |message| %>
-                            <div><%= User.find(message.sender_id).name %> said <%= message.content %></div>
+                                <div class="each_message">
+                                <div class="time_message"><%= distance_of_time_in_words(message.created_at, Time.now) %> ago</div>
+                                <% if User.find(message.sender_id).name == @current.name %>
+                                <div class="right_message">
+                                    <%= @current.name %>
+                                
+                                    <div class="right_bubble">
+                                        <%= message.content %>
+                                    </div>
+                                </div>
+                                <% else %>
+                                <div class="left_message">
+                                    <%= @user.name %>
+                                </div>
+                                    <div class="left_bubble">
+                                        <%= message.content %>
+                                    </div>
+                               
+                                <% end %>
                             <% end %>
                         </div>
                     <% end %>
                 <% end %>
             </div>
+            
         </div>
-        
+        <% end %>
         
     </div>
 </div>

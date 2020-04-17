@@ -1,12 +1,18 @@
-<%= form_for @subject do |s| %>
-    <%= s.label :name %>
-    <%= s.text_field :name %>
-    <%= s.hidden_field :professor_id, :value => @current.id %>
+<div class="subject_new">
+    <div id="subject_new">
+    <h2>Create a new course</h2>
+    <div class="new_course">
+    <%= form_for @subject do |s| %>
+    <%= s.label :name %><br>
+    <%= s.text_field :name, :placeholder => "Course Name" %><br>
+    <%= s.hidden_field :professor_id, :value => @current.id %><br>
     <%= s.submit %>
-<% end %>
+    <% end %>
+    </div>
 
 <%= render partial: "shared/error_list", locals: {new_object: @subject} %>
 
 
-
+</div>
+</div>
 

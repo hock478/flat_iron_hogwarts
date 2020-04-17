@@ -339,7 +339,9 @@
   
 }
 
-#friends {
+.friend_request {
+ display: flex;
+ flex-flow: row;
  
 }
 .friend_button {
@@ -369,6 +371,50 @@ margin-top: -25px;
   color: white;
 }
 
+#chat_field [type=text] {
+  width: 240px;
+}
+#chat_window {
+  overflow: auto;
+}
+.time_message {
+  margin: 10px;
+  color: rgb(225, 225, 225);
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+.left_message {
+  display: flex;
+  justify-content: flex-start;
+}
+.left_bubble {
+  background-color: rgba(65, 147, 235, 0.516);
+  padding: 8px;
+  display: flex;
+  width: 150px;
+  justify-content: flex-start;
+  border: 1px double rgb(42, 66, 126);
+  border-radius: 10px;
+  
+}
+.right_message{
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  
+  /* justify-content: flex-start; */
+}
+.right_bubble {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  background-color: rgba(90, 220, 122, 0.673);
+  padding: 8px;
+  width: 150px;
+  border-radius: 10px;
+ 
+}
 
 #subjects {
   margin-top: -60px;
@@ -798,3 +844,36 @@ div.subject_page {
   color: red;
 }
 
+.new_course {
+  font-size: 20px;
+}
+
+.new_course [type=text]{
+  width: 250px;
+}
+
+div.subject_new {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 95px);
+  padding-top: 30px;
+  
+  
+  background: url("sub2.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+  overflow: auto;
+}
+
+#subject_new {
+  color:white;
+  width: 600px;
+  margin-left: 50px;
+  padding: 5px 10px 20px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+  height: 200px;
+}

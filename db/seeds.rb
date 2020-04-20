@@ -13,14 +13,14 @@ House.destroy_all
 
 
 
-house1 = House.create(name: "Gryffindor", img: "gryffindor.png")
-house2 = House.create(name: "Slytherin", img: "slytherin.png")
-house3 = House.create(name: "Ravenclaw",img: "raveclaw.png")
-house4 = House.create(name: "Hufflepuff", img: "hufflepuff.png")
+house1 = House.create(name: "Gryffindor", img: "gryffindor.png", points: 0)
+house2 = House.create(name: "Slytherin", img: "slytherin.png", points: 0)
+house3 = House.create(name: "Ravenclaw",img: "raveclaw.png", points: 0)
+house4 = House.create(name: "Hufflepuff", img: "hufflepuff.png", points: 0)
 
-stud1 = User.create(name: "alex", email: "alex@dd.com", password_digest: BCrypt::Password.create('password'))
-prof1 = User.create(name: "chine", email: "chine@dd.com", password_digest: BCrypt::Password.create('password'), house: house3, professor: true)
-sub1 = Subject.create(name: "Something 101", professor: prof1)
+stud1 = User.create(name: "Alex D", email: "alexduterte@gmail.com", password_digest: BCrypt::Password.create('password'), house: house2)
+prof1 = User.create(name: "Chine Anikwe", email: "chine@dd.com", password_digest: BCrypt::Password.create('password'), house: house3, professor: true)
+sub1 = Subject.create(name: "Intro to CSS", professor: prof1)
 enr1 = Enrollment.create(student: stud1, subject: sub1)
 
 

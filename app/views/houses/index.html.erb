@@ -3,7 +3,7 @@
 
     <div id="hall_houses">
     <div>
-    <% @houses.each do |house| %>
+    <% @houses.order('id ASC').each do |house| %>
         <div id="hall_<%= house.name %>">
             <% if @current %>
                 <% if @current.house == house %>
